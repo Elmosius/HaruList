@@ -13,6 +13,38 @@ export function useFormattedDate(
   return useDateFormat(now, format, { locales: locale });
 }
 
+export function useFormattedDay(
+  format: string = "dddd",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  const now = useNow();
+  return useDateFormat(now, format, { locales: locale });
+}
+
+export function useFormattedDay2(
+  format: string = "D",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  const now = useNow();
+  return useDateFormat(now, format, { locales: locale });
+}
+
+export function useFormattedMonth(
+  format: string = "M",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  const now = useNow();
+  return useDateFormat(now, format, { locales: locale });
+}
+
+export function useFormattedYear(
+  format: string = "YYYY",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  const now = useNow();
+  return useDateFormat(now, format, { locales: locale });
+}
+
 /**
  * Utils untuk format jam
  * default: "15:34:05"
@@ -23,6 +55,14 @@ export function useFormattedTime(
 ): ComputedRef<string> {
   const now = useNow();
   return useDateFormat(now, format, { locales: locale });
+}
+
+export function formatDate(
+  x: Date | string | null | undefined,
+  format: string = "dddd, D MMMM YYYY",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  return useDateFormat(x, format, { locales: locale });
 }
 
 export function getGreeting(): string {
@@ -56,10 +96,15 @@ function toDate(v?: string | Date | null): Date | null {
 export function isNowInRange(
   start?: string | Date | null,
   end?: string | Date | null,
+  date?: string | Date | null,
   now: Date = new Date(),
 ): boolean {
   const s = toDate(start);
   const e = toDate(end);
+  const x = toDate(date);
   if (!s || !e) return false;
+
+  if (x) return x.getTime() >= s.getTime() && x.getTime() <= e.getTime();
+
   return s.getTime() <= now.getTime() && now.getTime() <= e.getTime();
 }
