@@ -32,7 +32,7 @@ const scrollToTop = () => {
         : 'bg-primary',
     ]"
   >
-    <nav class="container mx-auto px-4 py-3 md:px-16">
+    <nav class="container mx-auto px-4 py-3 md:px-16 xl:px-30">
       <button @click="scrollToTop" class="flex items-center gap-3">
         <div
           class="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center"

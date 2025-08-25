@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ITask } from "../../../types/task.ts";
 import { formatTime } from "../../../utils/date.ts";
-
+import { moods } from "../ModalCreate/moods.ts";
 const { tasks } = defineProps<{
   tasks: ITask[];
 }>();
@@ -34,7 +34,17 @@ const emit = defineEmits<{
         {{ task.title }}
       </h4>
     </div>
-    <p class="text-xs font-light">{{ formatTime(task.date) }}</p>
+
+    <div class="flex items-center gap-3">
+      <p class="text-xs font-light">
+        {{ formatTime(task.dateStart) }} - {{ formatTime(task.dateEnd) }}
+      </p>
+      <div
+        class="p-2 w-2 h-2 flex items-center justify-center rounded-full bg-secondary/20"
+      >
+        {{ moods[task.mood] }}
+      </div>
+    </div>
   </div>
 </template>
 

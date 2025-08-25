@@ -47,3 +47,19 @@ export function formatTime(
   const date = typeof value === "string" ? new Date(value) : value;
   return useDateFormat(date, format, { locales: locale }).value;
 }
+
+function toDate(v?: string | Date | null): Date | null {
+  if (!v) return null;
+  return v instanceof Date ? v : new Date(v);
+}
+
+export function isNowInRange(
+  start?: string | Date | null,
+  end?: string | Date | null,
+  now: Date = new Date(),
+): boolean {
+  const s = toDate(start);
+  const e = toDate(end);
+  if (!s || !e) return false;
+  return s.getTime() <= now.getTime() && now.getTime() <= e.getTime();
+}

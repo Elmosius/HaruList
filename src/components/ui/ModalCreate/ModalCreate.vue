@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive, ref, watch } from "vue";
 import { moods } from "./moods.ts";
 import type { ITask } from "../../../types/task.ts";
 
@@ -8,29 +8,52 @@ const emit = defineEmits<{
   (e: "addTask", task: ITask): void;
 }>();
 
-const taskName = ref("");
-const selectedMood = ref(null);
-const taskDate = ref("");
+const task = reactive({
+  title: "",
+  dateStart: "",
+  dateEnd: "",
+  mood: null,
+});
 
 const addTask = () => {
-  if (!taskName.value.trim()) return;
+  if (!task.title.trim()) return;
 
   const newTask = {
     id: Math.floor(Math.random() * 1000000),
-    title: taskName.value,
+    title: task.title,
     status: "pending",
-    date: taskDate.value,
-    mood: selectedMood.value,
+    dateStart: task.dateStart,
+    dateEnd: task.dateEnd,
+    mood: task.mood,
   };
 
   emit("addTask", newTask);
 
-  taskName.value = "";
-  selectedMood.value = null;
-  taskDate.value = "";
+  task.title = "";
+  task.mood = null;
+  task.dateStart = "";
+  task.dateEnd = "";
 
   emit("closeModal");
 };
+
+watch(
+  () => task.dateStart,
+  (newStart) => {
+    if (task.dateEnd && newStart > task.dateEnd) {
+      task.dateEnd = newStart;
+    }
+  },
+);
+
+watch(
+  () => task.dateEnd,
+  (newEnd) => {
+    if (task.dateStart && newEnd < task.dateStart) {
+      task.dateStart = newEnd;
+    }
+  },
+);
 </script>
 
 <template>
@@ -57,7 +80,7 @@ const addTask = () => {
           Task name
         </label>
         <input
-          v-model="taskName"
+          v-model="task.title"
           type="text"
           placeholder="What are you going to do?"
           class="w-full text-sm px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 ring-secondary focus:border-transparent"
@@ -73,10 +96,10 @@ const addTask = () => {
           <button
             v-for="(emoji, index) in moods"
             :key="index"
-            @click="selectedMood = index"
+            @click="task.mood = index"
             :class="[
               'w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-2xl transition-all',
-              selectedMood === index
+              task.mood === index
                 ? 'ring-2 ring-accent bg-blue-50'
                 : 'hover:bg-gray-200',
             ]"
@@ -94,18 +117,32 @@ const addTask = () => {
           Set a due time for this task
         </label>
         <input
-          v-model="taskDate"
+          v-model="task.dateStart"
           type="datetime-local"
           class="w-full px-4 text-sm py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+          :max="task.dateEnd"
+        />
+
+        <input
+          v-model="task.dateEnd"
+          type="datetime-local"
+          :min="task.dateStart"
+          class="w-full px-4 text-sm py-3 mt-1 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
         />
       </div>
 
       <button
         @click="addTask"
-        :disabled="!taskName.trim()"
+        :disabled="
+          !(task.dateEnd && task.dateEnd) ||
+          !task.title.trim() ||
+          !task.mood === 0
+        "
         :class="[
-          'w-full py-2 text-sm rounded-xl font-mediuma transition-colors',
-          !taskName.trim()
+          'w-full py-2 text-sm rounded-xl font-medium transition-colors',
+          !(task.dateEnd && task.dateEnd) ||
+          !task.title.trim() ||
+          !task.mood === 0
             ? 'bg-secondary/30 text-primary hover:bg-slate-700'
             : 'bg-secondary text-primary cursor-not-allowed',
         ]"
