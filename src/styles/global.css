@@ -4,11 +4,12 @@
 @layer base {
     :root {
         font-family: 'Nunito', sans-serif;
+        @apply scroll-smooth;
     }
 }
 
 @theme{
-    --color-primary: #E8F1F2;
+    --color-primary: #F6F4F3;
     --color-secondary: #343434;
     --color-accent: #FF6F59;
 }
