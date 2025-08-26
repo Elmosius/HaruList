@@ -1,10 +1,17 @@
 <script setup="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { House, ClipboardList } from "lucide-vue-next";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const activeItem = ref(router.currentRoute.value.path);
+
+watch(
+  () => router.currentRoute.value.path,
+  (newPath) => {
+    activeItem.value = newPath;
+  },
+);
 </script>
 
 <template>
