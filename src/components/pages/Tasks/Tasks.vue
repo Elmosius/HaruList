@@ -60,7 +60,7 @@ const handleAddTask = (newTask: ITask) => {
           @click="isOpen = true"
           class="w-6 h-6 flex items-center justify-center bg-accent rounded-lg"
         >
-          <Plus class="w-4 h-4 text-primary animate-bounce duration-3000" />
+          <Plus class="w-4 h-4 text-primary" />
         </button>
       </div>
     </div>
