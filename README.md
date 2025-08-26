@@ -1,8 +1,7 @@
-# HaruList
+# 📝 HaruList
 
-HaruList (하루리스트) adalah aplikasi to-do list sederhana untuk mencatat kegiatan harian sekaligus melacak mood. Kamu bisa menambah task, menandai task sebagai **completed**, serta mengecek daftar to-do berdasarkan tanggal di kalender.  
+HaruList (하루리스트) adalah aplikasi to-do list sederhana untuk mencatat kegiatan harian sekaligus melacak mood. Kamu bisa menambah task, menandai task sebagai **completed**, serta mengecek daftar to-do berdasarkan tanggal di kalender.
 
----
 
 ## Fitur
 - Tambah to-do list
@@ -21,7 +20,7 @@ HaruList (하루리스트) adalah aplikasi to-do list sederhana untuk mencatat k
 - [Lucide Vue](https://lucide.dev/) untuk ikon modern
 - [Vite](https://vitejs.dev/) untuk build tools cepat
 
----
+
 
 ## 📂 Project Setup
 
@@ -52,3 +51,4 @@ Project ini dibuat untuk:
 - Implementasi UI interaktif dengan TailwindCSS. 
 - Eksperimen membuat komponen kalender custom native dari nol.
 - Belajar menyimpan data menggunakan Local Storage.
+ 
