@@ -58,7 +58,7 @@ export function useFormattedTime(
 }
 
 export function formatDate(
-  x: Date | string | null | undefined,
+  x: Date | string,
   format: string = "dddd, D MMMM YYYY",
   locale: string = "en-US",
 ): ComputedRef<string> {
@@ -104,7 +104,7 @@ export function isNowInRange(
   const x = toDate(date);
   if (!s || !e) return false;
 
-  if (x) return x.getTime() >= s.getTime() && x.getTime() <= e.getTime();
+  if (x) return x.getDate() >= s.getDate() && x.getDate() <= e.getDate();
 
   return s.getTime() <= now.getTime() && now.getTime() <= e.getTime();
 }

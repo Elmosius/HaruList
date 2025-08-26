@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
+import { reactive, watch } from "vue";
 import { moods } from "./moods.ts";
 import type { ITask } from "../../../types/task.ts";
 
@@ -12,7 +12,7 @@ const task = reactive({
   title: "",
   dateStart: "",
   dateEnd: "",
-  mood: null,
+  mood: null as number | null,
 });
 
 const addTask = () => {
@@ -24,7 +24,7 @@ const addTask = () => {
     status: "pending",
     dateStart: task.dateStart,
     dateEnd: task.dateEnd,
-    mood: task.mood,
+    mood: task.mood as number,
   };
 
   emit("addTask", newTask);
@@ -136,13 +136,13 @@ watch(
         :disabled="
           !(task.dateEnd && task.dateEnd) ||
           !task.title.trim() ||
-          !task.mood === 0
+          task.mood === null
         "
         :class="[
           'w-full py-2 text-sm rounded-xl font-medium transition-colors',
           !(task.dateEnd && task.dateEnd) ||
           !task.title.trim() ||
-          !task.mood === 0
+          task.mood === null
             ? 'bg-secondary/30 text-primary hover:bg-slate-700'
             : 'bg-secondary text-primary cursor-not-allowed',
         ]"

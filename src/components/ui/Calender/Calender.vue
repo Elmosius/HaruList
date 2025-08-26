@@ -9,12 +9,11 @@ import { days, months } from "./calender.ts";
 import { computed, ref } from "vue";
 
 const now = formatDate(new Date()).value;
-const monthCurrent = ref(useFormattedMonth().value);
-const yearCurrent = ref(useFormattedYear().value);
-const dateSelected = ref("");
+const monthCurrent = ref<number>(Number(useFormattedMonth().value));
+const yearCurrent = ref<number>(Number(useFormattedYear().value));
+const dateSelected = ref<Date>();
 
 function handleSelectedDate(date: Date) {
-  console.log(now === date);
   dateSelected.value = date;
   emit("selectedDate", date);
 }
@@ -46,7 +45,7 @@ const calendarDates = computed(() => {
   const firstOfMonth = new Date(yearCurrent.value, monthIndex, 1);
   const offset = (firstOfMonth.getDay() + 6) % 7;
   const start = new Date(firstOfMonth);
-  start.setHours(0, 0, 0, 0);
+  start.setHours(23, 59, 0, 0);
   start.setDate(1 - offset);
 
   const out = [];

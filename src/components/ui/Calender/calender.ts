@@ -1,4 +1,4 @@
-const months = [
+const months: string[] = [
   "January",
   "February",
   "March",
@@ -13,6 +13,6 @@ const months = [
   "December",
 ];
 
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const days: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 export { months, days };
