@@ -1,6 +1,6 @@
 # 📝 HaruList
 
-HaruList (하루리스트) adalah aplikasi to-do list sederhana untuk mencatat kegiatan harian sekaligus melacak mood. Kamu bisa menambah task, menandai task sebagai **completed**, serta mengecek daftar to-do berdasarkan tanggal di kalender.
+HaruList (하루리스트) adalah aplikasi to-do list sederhana untuk mencatat kegiatan harian sekaligus melacak mood. Kamu bisa menambah task, menandai task sebagai **completed**, serta mengecek daftar to-do berdasarkan tanggal di kalender. [Live Demonya](https://harulist.vercel.app/)
 
 
 ## Fitur
