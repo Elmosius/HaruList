@@ -1,4 +1,4 @@
-<script setup="ts">
+<script setup lang="ts">
 import { ref, watch } from "vue";
 import { House, ClipboardList } from "lucide-vue-next";
 import { useRouter } from "vue-router";
