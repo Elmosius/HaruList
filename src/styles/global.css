@@ -9,6 +9,7 @@
     button{
         cursor: pointer;
     }
+
 }
 
 @theme{
@@ -16,3 +17,5 @@
     --color-secondary: #343434;
     --color-accent: #FF6F59;
 }
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

@@ -21,8 +21,10 @@ const emit = defineEmits<{
     <div class="flex items-center gap-5">
       <div
         :class="[
-          'rounded-full w-4 h-4 border border-secondary/30 transition-all duration-100',
-          task.status === 'completed' ? 'bg-secondary/20' : '',
+          'rounded-full w-4 h-4 border   dark:border-primary border-secondary/30 transition-all duration-100',
+          task.status === 'completed'
+            ? 'bg-secondary/20 dark:bg-primary/20'
+            : '',
         ]"
       ></div>
       <h4

@@ -65,7 +65,7 @@ const calendarDates = computed(() => {
 </script>
 
 <template>
-  <section class="shadow-sm py-3 rounded-xl">
+  <section class="shadow-sm py-3 rounded-xl dark:border dark:border-gray-200">
     <!-- Header -->
     <div class="text-center flex items-center justify-evenly gap-2 mb-5">
       <button
@@ -74,7 +74,7 @@ const calendarDates = computed(() => {
       >
         <ChevronLeft class="w-4 h-4" />
       </button>
-      <h2 class="text-lg font-bold text-secondary">
+      <h2 class="text-lg font-bold text-secondary dark:text-primary">
         {{ months[monthCurrent - 1] }} {{ yearCurrent }}
       </h2>
       <button
@@ -91,7 +91,7 @@ const calendarDates = computed(() => {
         <div
           class="grid grid-cols-7 gap-x-5 text-sm text-secondary text-center"
         >
-          <div v-for="(day, i) in days" :key="i">
+          <div v-for="(day, i) in days" :key="i" class="dark:text-primary">
             {{ day }}
           </div>
         </div>
@@ -108,9 +108,13 @@ const calendarDates = computed(() => {
               now === formatDate(date.fullDate).value
                 ? 'bg-accent text-white'
                 : '',
-              dateSelected === date.fullDate ? 'bg-secondary text-white' : '',
-              date.isCurrentMonth ? 'text-secondary' : 'text-secondary/40',
-              'w-8 h-8 mx-auto flex items-center justify-center rounded-full',
+              dateSelected === date.fullDate
+                ? 'bg-secondary text-white dark:bg-gray-200 dark:text-secondary'
+                : '',
+              date.isCurrentMonth
+                ? 'text-secondary'
+                : 'text-secondary/40 dark:text-primary/40',
+              'w-8 h-8 mx-auto flex items-center justify-center rounded-full dark:text-primary  cursor-pointer transition-all duration-100',
             ]"
           >
             {{ date.date }}

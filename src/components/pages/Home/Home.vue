@@ -48,7 +48,7 @@ const filteredTasks = computed(() =>
       <div class="flex justify-center">
         <button
           @click="isOpen = true"
-          class="bg-secondary text-primary px-6 py-2 rounded-xl mt-5 w-full md:w-1/2"
+          class="bg-secondary dark:border dark:border-b-gray-200 text-primary px-6 py-2 rounded-xl mt-5 w-full md:w-1/2"
         >
           + Add New Task
         </button>

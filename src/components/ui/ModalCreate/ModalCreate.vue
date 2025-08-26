@@ -62,13 +62,18 @@ watch(
     @click="emit('closeModal')"
   >
     <!-- Modal Content -->
-    <div class="bg-primary rounded-3xl p-6 w-full max-w-md mx-4" @click.stop>
+    <div
+      class="bg-primary dark:bg-secondary dark:border dark:border-b-gray-200 rounded-3xl p-6 w-full max-w-md mx-4"
+      @click.stop
+    >
       <!-- Header -->
       <div class="flex items-center justify-between mb-6">
-        <h2 class="text-xl font-semibold text-gray-900">Add new task</h2>
+        <h2 class="text-xl font-semibold text-secondary dark:text-primary">
+          Add new task
+        </h2>
         <button
           @click="emit('closeModal')"
-          class="text-gray-400 hover:text-gray-600 text-2xl"
+          class="text-gray-400 hover:text-gray-600 text-2xl dark:text-primary dark:hover:text-primary/95"
         >
           ×
         </button>
@@ -76,20 +81,24 @@ watch(
 
       <!-- Task Name Input -->
       <div class="mb-6">
-        <label class="block text-sm font-medium text-gray-700 mb-2">
+        <label
+          class="block text-sm font-medium text-gray-700 mb-2 dark:text-primary"
+        >
           Task name
         </label>
         <input
           v-model="task.title"
           type="text"
           placeholder="What are you going to do?"
-          class="w-full text-sm px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 ring-secondary focus:border-transparent"
+          class="w-full text-sm px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 ring-secondary focus:border-transparent dark:bg-secondary dark:border-gray-200 dark:text-primary dark:placeholder-primary/50 dark:focus:ring-primary/50"
         />
       </div>
 
       <!-- Mood Selection -->
       <div class="mb-6">
-        <label class="block text-sm font-medium text-gray-700 mb-3">
+        <label
+          class="block text-sm font-medium text-gray-700 mb-3 dark:text-primary"
+        >
           How do you feel about this task?
         </label>
         <div class="flex gap-3 justify-center">
@@ -107,19 +116,21 @@ watch(
             {{ emoji }}
           </button>
         </div>
-        <p class="text-center text-xs text-gray-500 mt-2">
+        <p class="text-center text-xs text-gray-500 mt-2 dark:text-primary">
           Please select your mood
         </p>
       </div>
 
       <div class="mb-8">
-        <label class="block text-sm font-medium text-gray-700 mb-2">
+        <label
+          class="block text-sm font-medium text-gray-700 mb-2 dark:text-primary"
+        >
           Set a due time for this task
         </label>
         <input
           v-model="task.dateStart"
           type="datetime-local"
-          class="w-full px-4 text-sm py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+          class="w-full px-4 text-sm py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent dark:bg-secondary dark:border-gray-200 dark:text-primary dark:placeholder-primary/50 dark:focus:ring-primary/50"
           :max="task.dateEnd"
         />
 
@@ -127,7 +138,7 @@ watch(
           v-model="task.dateEnd"
           type="datetime-local"
           :min="task.dateStart"
-          class="w-full px-4 text-sm py-3 mt-1 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+          class="w-full px-4 text-sm py-3 mt-1 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent dark:bg-secondary dark:border-gray-200 dark:text-primary dark:placeholder-primary/50 dark:focus:ring-primary/50"
         />
       </div>
 
@@ -139,12 +150,12 @@ watch(
           task.mood === null
         "
         :class="[
-          'w-full py-2 text-sm rounded-xl font-medium transition-colors',
+          'w-full py-2 text-sm rounded-xl font-medium transition-colors ',
           !(task.dateEnd && task.dateEnd) ||
           !task.title.trim() ||
           task.mood === null
-            ? 'bg-secondary/30 text-primary hover:bg-slate-700'
-            : 'bg-secondary text-primary cursor-not-allowed',
+            ? 'bg-secondary/30 text-primary hover:bg-slate-700 cursor-not-allowed dark:border dark:border-gray-200 '
+            : 'bg-secondary text-primary dark:bg-primary dark:border  hover:bg-primary/90 dark:hover:bg-primary/90 dark:text-secondary',
         ]"
       >
         Add a task

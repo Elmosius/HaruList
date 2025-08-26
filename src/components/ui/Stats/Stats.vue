@@ -36,19 +36,19 @@ const completedTasks = computed(
             <Check class="w-4 h-4 text-accent" />
           </div>
         </div>
-        <p class="text-sm text-gray-500 mt-1">Completed</p>
+        <p class="text-sm text-gray-500 mt-1 dark:text-primary">Completed</p>
       </div>
 
       <div class="p-6 shadow-sm border border-gray-200 rounded-2xl w-full">
         <div class="flex items-center justify-between">
           <h3>{{ tasks.length - completedTasks }}</h3>
           <div
-            class="rounded-lg bg-secondary/20 w-6 h-6 flex items-center justify-center"
+            class="rounded-lg bg-secondary/20 w-6 h-6 flex items-center justify-center dark:bg-primary/20"
           >
-            <Clock8 class="w-4 h-4 text-secondary" />
+            <Clock8 class="w-4 h-4 text-secondary dark:text-primary" />
           </div>
         </div>
-        <p class="text-sm text-gray-500 mt-1">Pending</p>
+        <p class="text-sm text-gray-500 mt-1 dark:text-primary">Pending</p>
       </div>
     </div>
   </section>
