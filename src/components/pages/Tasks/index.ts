@@ -1,3 +1,3 @@
-import TodayTask from "../../ui/TodayTask.vue";
+import Tasks from "./Tasks.vue";
 
-export default TodayTask;
+export default Tasks;
