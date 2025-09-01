@@ -3,12 +3,15 @@ import Header from "../../ui/Header";
 import Footer from "../../ui/Footer";
 import FloatingNav from "../../ui/FloatingNav";
 import { useLocalStorage } from "@vueuse/core";
+import Loading from "../../ui/Loading";
 
 const darkMode = useLocalStorage("darkMode", false);
 </script>
 
 <template>
-  <div :data-theme="darkMode ? 'dark' : ''">
+  <Loading />
+
+  <div :data-theme="darkMode ? 'dark' : ''" id="default-layout" class="hidden">
     <Header />
 
     <main
