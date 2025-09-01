@@ -11,6 +11,7 @@ onMounted(() => {
   if (!loading.value) return;
 
   const defaultLayout = document.getElementById("default-layout");
+  const sectionLoading = document.getElementById("loading");
 
   const tl = gsap.timeline({
     yoyo: true,
@@ -34,22 +35,19 @@ onMounted(() => {
       duration: 1,
       ease: "power1.inOut",
     })
-    .to(
-      "#default-layout",
-      {
-        duration: 1,
-        onComplete: () => {
-          loading.value?.classList.add("hidden");
-          defaultLayout?.classList.remove("hidden");
-        },
+    .to(sectionLoading, {
+      backgroundColor: "#F6F4F3",
+      duration: 1,
+      onComplete: () => {
+        sectionLoading?.classList.add("hidden");
+        defaultLayout?.classList.remove("hidden");
       },
-      "-=1",
-    );
+    });
 });
 </script>
 
 <template>
-  <section class="h-screen w-screen bg-black" ref="loading">
+  <section class="h-screen w-screen bg-black" id="loading">
     <div
       class="flex flex-col items-center justify-center h-screen gap-3"
       ref="loading"
