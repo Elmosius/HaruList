@@ -6,7 +6,7 @@ import TodayTask from "../../ui/TodayTask";
 import ModalCreate from "../../ui/ModalCreate";
 import { useLocalStorage } from "@vueuse/core";
 import type { ITask } from "../../../types/task.ts";
-import { formatDate, isNowInRange } from "../../../utils/date.ts";
+import { isNowInRange } from "../../../utils/date.ts";
 
 const tasks = useLocalStorage<ITask[]>("tasks", []);
 const handleStatus = (id: number) => {
