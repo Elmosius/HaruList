@@ -5,7 +5,7 @@ import type { ComputedRef } from "vue";
  * Utils untuk format tanggal
  * default: "Sabtu, 23 Agustus 2025"
  */
-export function useFormattedDate(
+export function useFormattedDateNow(
   format: string = "dddd, D MMMM YYYY",
   locale: string = "en-US",
 ): ComputedRef<string> {
@@ -13,23 +13,7 @@ export function useFormattedDate(
   return useDateFormat(now, format, { locales: locale });
 }
 
-export function useFormattedDay(
-  format: string = "dddd",
-  locale: string = "en-US",
-): ComputedRef<string> {
-  const now = useNow();
-  return useDateFormat(now, format, { locales: locale });
-}
-
-export function useFormattedDay2(
-  format: string = "D",
-  locale: string = "en-US",
-): ComputedRef<string> {
-  const now = useNow();
-  return useDateFormat(now, format, { locales: locale });
-}
-
-export function useFormattedMonth(
+export function useFormattedMonthNow(
   format: string = "M",
   locale: string = "en-US",
 ): ComputedRef<string> {
@@ -37,20 +21,8 @@ export function useFormattedMonth(
   return useDateFormat(now, format, { locales: locale });
 }
 
-export function useFormattedYear(
+export function useFormattedYearNow(
   format: string = "YYYY",
-  locale: string = "en-US",
-): ComputedRef<string> {
-  const now = useNow();
-  return useDateFormat(now, format, { locales: locale });
-}
-
-/**
- * Utils untuk format jam
- * default: "15:34:05"
- */
-export function useFormattedTime(
-  format: string = "HH:mm:ss",
   locale: string = "en-US",
 ): ComputedRef<string> {
   const now = useNow();
@@ -60,6 +32,14 @@ export function useFormattedTime(
 export function formatDate(
   x: Date | string,
   format: string = "dddd, D MMMM YYYY",
+  locale: string = "en-US",
+): ComputedRef<string> {
+  return useDateFormat(x, format, { locales: locale });
+}
+
+export function formatDate2(
+  x: Date | string,
+  format: string = "D/MM/YY, HH:mm",
   locale: string = "en-US",
 ): ComputedRef<string> {
   return useDateFormat(x, format, { locales: locale });

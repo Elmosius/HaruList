@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import {
   formatDate,
-  useFormattedMonth,
-  useFormattedYear,
+  useFormattedMonthNow,
+  useFormattedYearNow,
 } from "../../../utils/date.ts";
 import { ChevronLeft, ChevronRight } from "lucide-vue-next";
 import { days, months } from "./calender.ts";
 import { computed, ref } from "vue";
 
 const now = formatDate(new Date()).value;
-const monthCurrent = ref<number>(Number(useFormattedMonth().value));
-const yearCurrent = ref<number>(Number(useFormattedYear().value));
+const monthCurrent = ref<number>(Number(useFormattedMonthNow().value));
+const yearCurrent = ref<number>(Number(useFormattedYearNow().value));
 const dateSelected = ref<Date>();
 
 function handleSelectedDate(date: Date) {

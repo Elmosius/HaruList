@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ITask } from "../../../types/task.ts";
-import { formatTime } from "../../../utils/date.ts";
+import { formatDate2, formatTime } from "../../../utils/date.ts";
 import { moods } from "../ModalCreate/moods.ts";
 const { tasks } = defineProps<{
   tasks: ITask[];
@@ -38,8 +38,11 @@ const emit = defineEmits<{
     </div>
 
     <div class="flex items-center gap-3">
-      <p class="text-xs font-light">
-        {{ formatTime(task.dateStart) }} - {{ formatTime(task.dateEnd) }}
+      <p v-if="task.dateStart === task.dateEnd" class="text-xs font-light">
+        {{ formatTime(task.dateStart) }}
+      </p>
+      <p v-else class="text-xs font-light">
+        {{ formatDate2(task.dateStart) }} - {{ formatDate2(task.dateEnd) }}
       </p>
       <div
         class="p-2 w-2 h-2 flex items-center justify-center rounded-full bg-secondary/20"

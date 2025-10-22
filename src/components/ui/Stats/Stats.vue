@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Check, Clock8 } from "lucide-vue-next";
-import { getGreeting, useFormattedDate } from "../../../utils/date.ts";
+import { getGreeting, useFormattedDateNow } from "../../../utils/date.ts";
 import type { ITask } from "../../../types/task.ts";
 import { computed } from "vue";
 
-const now = useFormattedDate();
+const now = useFormattedDateNow();
 const greet = getGreeting();
 
 const { tasks } = defineProps<{
