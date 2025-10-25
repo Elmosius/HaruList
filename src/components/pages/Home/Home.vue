@@ -7,6 +7,7 @@ import ModalCreate from '../../ui/ModalCreate';
 import { useLocalStorage } from '@vueuse/core';
 import type { ITask } from '../../../types/task';
 import { isNowInRange } from '../../../utils/date';
+import Button from '../../ui/Button';
 
 const tasks = useLocalStorage<ITask[]>('tasks', []);
 const handleStatus = (id: number) => {
@@ -42,7 +43,8 @@ const filteredTasks = computed(() => tasks.value.filter((task) => isNowInRange(t
       <NoTask v-if="filteredTasks.length === 0" />
 
       <div class="flex justify-center">
-        <button @click="isOpen = true" class="bg-secondary dark:border dark:border-b-gray-200 text-primary px-6 py-2 rounded-xl mt-5 w-full md:w-1/2">+ Add New Task</button>
+        <!-- <button @click="isOpen = true" class="bg-secondary dark:border dark:border-b-gray-200 text-primary px-6 py-2 rounded-xl mt-5 w-full md:w-1/2">+ Add New Task</button> -->
+        <Button @click="isOpen = true">+ Add New Task </Button>
       </div>
 
       <ModalCreate v-if="isOpen" @add-task="handleAddTask" @close-modal="closeModal" />
